@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'array/input'
-  get 'array/view'
-  root 'array#input.html.erb'
+  get 'input/input'
+  get 'input/view'
+  root 'input#input.html.erb'
 end

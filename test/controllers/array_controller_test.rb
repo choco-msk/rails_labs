@@ -1,4 +1,4 @@
-require 'test_helper'
+git require 'test_helper'
 
 class ArrayControllerTest < ActionDispatch::IntegrationTest
   test "should get input" do
