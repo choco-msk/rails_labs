@@ -14,5 +14,12 @@ class InputController < ApplicationController
       num_new = 0.5*(num_new + num/num_new)
       @result << num_new
     end
+    respond_to do |format|
+      format.html
+      format.json do
+        render json:
+                   {type: @result.class.to_s, value: @result}
+      end
+    end
   end
 end

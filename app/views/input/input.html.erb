@@ -1,6 +1,10 @@
 <h1>Input</h1>
-<%= form_tag("/input/view", :method => "get") do %>
+<%= form_tag("/input/view.json", :method => "get",
+             :remote => true, id: "input_form") do %>
   <%= label_tag("The number:") %>
   <%= text_field_tag :num %>
   <%= submit_tag("Result") %>
 <% end %>
+<p style="margin-top: 5px; margin-bottom: 5px">Result:</p>
+<table id="result" border="1" cellpadding="5"></table>
+<%= javascript_pack_tag 'input' %>
