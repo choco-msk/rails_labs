@@ -1,0 +1,16 @@
+<h1>Output</h1>
+<table border="1" cellpadding="5">
+  <% if @result != "Error" then @result.each_with_index do |i, el| %>
+    <tr>
+      <td><%=el+1%></td>
+      <td><%=i%></td>
+    </tr>
+    <%end %>
+  <%else %>
+    <tr>
+      <td><b>Error</b></td>
+    </tr>
+  <%end %>
+</table>
+</br>
+<%= link_to "Repeat calculation", :rafson_input %>
