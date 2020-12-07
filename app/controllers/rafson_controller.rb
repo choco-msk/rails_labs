@@ -4,6 +4,7 @@ class RafsonController < ApplicationController
   def input; end
 
   def view
+    if params[:num]
     eps = 0.001
     if params[:num].to_s[/^\d+$/]
         num = params[:num].to_f
@@ -16,5 +17,6 @@ class RafsonController < ApplicationController
     else
       @result = "Error"
     end
+  end
   end
 end
