@@ -10,8 +10,9 @@ class RafsonControllerTest < ActionDispatch::IntegrationTest
     assert_equal assigns[:result], "Error"
   end
   test "should get correct" do
-    get rafson_view_url, params: {num: "16"}
-    res = assigns[:result][-1]
-    assert_in_delta res,4,0.001
+      get rafson_view_url, params: {num: "16"}
+      res = assigns[:result][-1]
+      assert_in_delta res,4,0.001
   end
 end
+
