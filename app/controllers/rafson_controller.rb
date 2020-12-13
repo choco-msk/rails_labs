@@ -5,7 +5,7 @@ class RafsonController < ApplicationController
 
   def view
     eps = 0.001
-    if params[:num].to_s[/^\d+$/]
+    if (params[:num].to_s[/^\d+$/]) && (params[:num.positive?])
         num = params[:num].to_f
         num_new = num
         @result = []
