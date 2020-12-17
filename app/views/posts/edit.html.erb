@@ -10,7 +10,25 @@
   <a class="btn btn-outline-primary" href="/signout">Log out</a>
 </header>
 <div class="container">
-  <h1><%= @post.title %></h1>
-  <h2><%= User.find_by_id(@post.author_id).name %></h2>
-  <p><%= @post.body %></p>
+  <h2>Редактирование поста</h2>
+  <%= form_for :post, url: post_path(@post), method: :patch do |f| %>
+    <% if @post.errors.any? %>
+      <% @post.errors.full_messages.each do |msg| %>
+        <div class="alert alert-danger">
+          <%= msg %>
+        </div>
+      <% end %>
+    <% end %>
+    <p>
+      <span>Title</span>
+      <%= f.text_field (:title) , ({:class => 'form-control'}) %>
+    </p>
+    <p>
+      <span>Body</span>
+      <%= f.text_area (:body), ({:class => 'form-control'}) %>
+    </p>
+    <p>
+      <%= f.submit ({:class => 'btn btn-success'}) %>
+    </p>
+  <% end %>
 </div>

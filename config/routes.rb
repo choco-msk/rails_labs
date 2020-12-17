@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'posts#index'
   get 'main/profile'
   get 'session/destroy'
+  get 'posts/my_posts'
   resources :sessions, only: %i[new create destroy]
   resources :users
   resources :posts

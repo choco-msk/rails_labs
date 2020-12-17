@@ -1,4 +1,4 @@
-<%= stylesheet_link_tag "new"%>
+<%= stylesheet_link_tag "news"%>
 <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
   <p class="h5 my-0 me-md-auto fw-normal" id="title"><b>BestPosts</b></p>
   <nav class="my-2 my-md-0 me-md-3">
@@ -10,25 +10,19 @@
   <a class="btn btn-outline-primary" href="/signout">Log out</a>
 </header>
 <div class="container">
-  <h2>New post</h2>
-  <%= form_for :post, url: posts_path do |f| %>
-    <% if @post.errors.any? %>
-      <% @post.errors.full_messages.each do |msg| %>
-        <div class="alert alert-danger">
-          <%= msg %>
-        </div>
-      <% end %>
+  <% @my_posts.each do |post| %>
+    <% if post.author_id == @_current_user.id%>
+     <div class="alert alert-light">
+        <h3><%= post.title %></h3>
+        <h4> <%= User.find_by_id(post.author_id).name %></h4>
+        <p> <%= post.body %></p>
+        <%= link_to 'Читать далее', post_path(post), :class =>
+            'btn btn-info'%>
+        <%= link_to 'Редактировать', edit_post_path(post), :class =>
+           'btn btn-warning'%>
+        <%= link_to 'Удалить', post_path(post), :method => :delete, data: {confirm: 'Подтвердите удаление статьи'}, :class =>
+           'btn btn-danger'%>
+     </div>
     <% end %>
-    <p>
-      <span>Title</span>
-      <%= f.text_field (:title) , ({:class => 'form-control'}) %>
-    </p>
-    <p>
-      <span>Body</span>
-      <%= f.text_area (:body), ({:class => 'form-control'}) %>
-    </p>
-    <p>
-      <%= f.submit ({:class => 'btn btn-success'}) %>
-    </p>
   <% end %>
 </div>
