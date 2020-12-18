@@ -1,29 +1,54 @@
-<p id="notice"><%= notice %></p>
+<%= stylesheet_link_tag "profile"%>
+<header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <img src="http://spbtpp.ru/wp-content/uploads/2018/12/Логотип-БП-Восстания-6.jpg">
+  <p class="h5 my-0 me-md-auto fw-normal" id="title"><b>BestPosts</b></p>
+  <nav class="my-2 my-md-0 me-md-3">
+    <span class="p-2 text-dark" ><%= link_to 'News', posts_path%></span>
+    <span class="p-2 text-dark" ><%= link_to 'Add new post', new_post_path%></span>
+    <span class="p-2 text-dark" ><%= link_to 'My Posts', posts_my_posts_path%></span>
+    <span class="p-2 text-dark" ><%= link_to 'My Profile', @_current_user%></span>
+  </nav>
+  <a class="btn btn-outline-primary" href="/signout">Log out</a>
+</header>
+<div class="container">
+  <% if @user.id == @profile_id %>
+    <h1>Мой профиль</h1>
+  <% else %>
+    <h1>Профиль</h1>
+  <% end %>
+  <div class="profile_el">
+    <p class="little">Имя</p>
+    <span><%= @user.name %></span>
+    <hr>
+  </div>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+  <div class="profile_el">
+    <p class="little">Почта</p>
+    <span><%= @user.email %></span>
+    <hr>
+  </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+  <div class="profile_el">
+    <p class="little">Возраст</p>
+    <span><%= @user.age %></span>
+    <hr>
+  </div>
 
-<p>
-  <strong>Age:</strong>
-  <%= @user.age %>
-</p>
+  <div class="profile_el">
+    <p class="little">Город</p>
+    <span><%= @user.town %></span>
+    <hr>
+  </div>
 
-<p>
-  <strong>Town:</strong>
-  <%= @user.town %>
-</p>
-
-<p>
-  <strong>Group:</strong>
-  <%= @user.group %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <div class="profile_el">
+    <p class="little">Группа</p>
+    <span><%= @user.group %></span>
+    <hr>
+  </div>
+  <% if @user.id == @profile_id %>
+    <%= link_to 'Редактировать', edit_user_path(@user), :class =>
+        'btn btn-warning'%>
+    <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Вы действительно хотите удалить профиль?' },
+        :class => 'btn btn-danger'%>
+    <% end %>
+</div>

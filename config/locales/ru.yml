@@ -1,0 +1,11 @@
+ru:
+  activerecord:
+    attributes:
+      user:
+        email: "Почта"
+        password: "Пароль"
+        password_confirmation: "Подтверждение пароля"
+        name: "Имя"
+        town: "Город"
+        group: "Группа"
+        age: "Возраст"

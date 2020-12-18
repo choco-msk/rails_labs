@@ -1,11 +1,12 @@
 <%= stylesheet_link_tag "news"%>
 <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <img src="http://spbtpp.ru/wp-content/uploads/2018/12/Логотип-БП-Восстания-6.jpg">
   <p class="h5 my-0 me-md-auto fw-normal" id="title"><b>BestPosts</b></p>
   <nav class="my-2 my-md-0 me-md-3">
     <span class="p-2 text-dark" ><%= link_to 'News', posts_path%></span>
     <span class="p-2 text-dark" ><%= link_to 'Add new post', new_post_path%></span>
     <span class="p-2 text-dark" ><%= link_to 'My Posts', posts_my_posts_path%></span>
-    <span class="p-2 text-dark" ><%= link_to 'My Profile', main_profile_path%></span>
+    <span class="p-2 text-dark" ><%= link_to 'My Profile', @_current_user%></span>
   </nav>
   <a class="btn btn-outline-primary" href="/signout">Log out</a>
 </header>
@@ -13,14 +14,13 @@
   <% @my_posts.each do |post| %>
     <% if post.author_id == @_current_user.id%>
      <div class="alert alert-light">
-        <h3><%= post.title %></h3>
-        <h4> <%= User.find_by_id(post.author_id).name %></h4>
+        <h4><%= post.title %></h4>
         <p> <%= post.body %></p>
-        <%= link_to 'Читать далее', post_path(post), :class =>
+        <%= link_to 'Read more', post_path(post), :class =>
             'btn btn-info'%>
-        <%= link_to 'Редактировать', edit_post_path(post), :class =>
+        <%= link_to 'Edit', edit_post_path(post), :class =>
            'btn btn-warning'%>
-        <%= link_to 'Удалить', post_path(post), :method => :delete, data: {confirm: 'Подтвердите удаление статьи'}, :class =>
+        <%= link_to 'Delete', post_path(post), :method => :delete, data: {confirm: 'Подтвердите удаление статьи'}, :class =>
            'btn btn-danger'%>
      </div>
     <% end %>

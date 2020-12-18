@@ -1,5 +1,6 @@
 <%= stylesheet_link_tag "new"%>
 <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <img src="http://spbtpp.ru/wp-content/uploads/2018/12/Логотип-БП-Восстания-6.jpg">
   <p class="h5 my-0 me-md-auto fw-normal" id="title"><b>BestPosts</b></p>
   <nav class="my-2 my-md-0 me-md-3">
     <span class="p-2 text-dark" ><%= link_to 'News', posts_path%></span>
@@ -29,6 +30,12 @@
     </p>
     <p>
       <%= f.submit ({:class => 'btn btn-success'}) %>
+      <a class="btn btn-outline-primary" href="#" id="backBtn">Назад</a>
     </p>
   <% end %>
 </div>
+<script>
+    document.getElementById('backBtn').onclick = function () {
+        history.back();
+    }
+</script>

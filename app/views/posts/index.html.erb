@@ -1,25 +1,28 @@
 <%= stylesheet_link_tag "news"%>
 <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <img src="http://spbtpp.ru/wp-content/uploads/2018/12/Логотип-БП-Восстания-6.jpg">
   <p class="h5 my-0 me-md-auto fw-normal" id="title"><b>BestPosts</b></p>
   <nav class="my-2 my-md-0 me-md-3">
     <span class="p-2 text-dark" ><%= link_to 'News', posts_path%></span>
     <span class="p-2 text-dark" ><%= link_to 'Add new post', new_post_path%></span>
     <span class="p-2 text-dark" ><%= link_to 'My Posts', posts_my_posts_path%></span>
-    <span class="p-2 text-dark" ><%= link_to 'My Profile', main_profile_path%></span>
+    <span class="p-2 text-dark" ><%= link_to 'My Profile', user_path(@_current_user)%></span>
   </nav>
   <a class="btn btn-outline-primary" href="/signout">Log out</a>
 </header>
 <div class="container">
   <h1>News</h1>
   <% @post.each do |post| %>
-    <div class="alert alert-light">
-      <% author_name = User.find_by_id(post.author_id).name %>
-      <h3><%= post.title %></h3>
-      <h4> <%= author_name%></h4>
-      <p> <%= post.body %></p>
-      <%= link_to 'Читать далее', post_path(post), :class =>
-          'btn btn-outline-primary'%>
-    </div>
+    <% if !User.find_by_id(post.author_id).nil? %>
+      <div class="alert alert-light">
+        <% author_name = User.find_by_id(post.author_id).name %>
+        <h3><%= link_to author_name, User.find_by_id(post.author_id) %></h3>
+        <h4><%= post.title %></h4>
+        <p> <%= post.body %></p>
+        <%= link_to 'Read more', post_path(post), :class =>
+            'btn btn-outline-primary'%>
+      </div>
+    <% end %>
   <% end %>
 </div>
 

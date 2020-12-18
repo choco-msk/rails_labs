@@ -1,25 +1,28 @@
-<%= stylesheet_link_tag "sign"%>
+<%= stylesheet_link_tag "signin"%>
 <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-  <p class="h5 my-0 me-md-auto fw-normal"><b>BestPosts</b></p>
-  <nav class="my-2 my-md-0 me-md-3">
-    <span class="p-2 text-dark" ><%= link_to 'News', posts_path%></span>
-    <span class="p-2 text-dark" ><%= link_to 'Add new post', new_post_path%></span>
-    <span class="p-2 text-dark" ><%= link_to 'My Posts', posts_my_posts_path%></span>
-    <span class="p-2 text-dark" ><%= link_to 'My Profile', main_profile_path%></span>
-  </nav>
+  <img src="http://spbtpp.ru/wp-content/uploads/2018/12/Логотип-БП-Восстания-6.jpg">
+  <p class="h5 my-0 me-md-auto fw-normal" id="title"><b>BestPosts</b></p>
+  <a class="btn btn-outline-primary" id="Button" href="/signin">Log in</a>
   <a class="btn btn-outline-primary" id="Button" href="/signup">Sign up</a>
 </header>
-<%= form_for(:session, :url => sessions_path) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Sign in" %>
-  </div>
-<% end %>
+<div class="container">
+  <%= form_for(:session, :url => sessions_path) do |f| %>
+    <% if !@title.nil? %>
+        <div class="alert alert-danger">
+          <%= @title %>
+        </div>
+    <% end %>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.text_field (:email), ({:class => 'form-control'}) %>
+    </div>
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field (:password), ({:class => 'form-control'})%>
+    </div>
+    <div class="actions">
+      <%= f.submit "Log in", ({:class => 'btn btn-outline-primary'}) %>
+    </div>
+  <% end %>
+</div>
 

@@ -4,5 +4,7 @@
 .container span {
     font-size: 18px;
 }
-
+input[type='submit'] {
+    width: 8rem;
+}
 

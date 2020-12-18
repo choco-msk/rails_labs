@@ -1,9 +1,9 @@
 footer {
     width: 100%;
     text-align: center;
+    align-items: center;
     position: absolute;
     bottom: 0;
-    align-items: center;
 }
 footer div {
     width: 100%;
@@ -11,3 +11,18 @@ footer div {
 #title {
     margin-right: auto;
 }
+* {
+    box-sizing: border-box;
+}
+body, html {
+    height: 100%;
+}
+#backBtn {
+    width: 8rem;
+}
+img {
+    width: 3em;
+    height: 70%;
+    margin-right: 2em;
+}
+

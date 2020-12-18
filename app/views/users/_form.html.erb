@@ -1,52 +1,56 @@
-<%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<%= stylesheet_link_tag "signup" %>
+  <body>
+    <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+      <img src="http://spbtpp.ru/wp-content/uploads/2018/12/Логотип-БП-Восстания-6.jpg">
+      <p class="h5 my-0 me-md-auto fw-normal" id="title"><b>BestPosts</b></p>
+      <a class="btn btn-outline-primary" id="Button" href="/signin">Log in</a>
+      <a class="btn btn-outline-primary" id="Button" href="/signup">Sign up</a>
+    </header>
+    <div class="container">
+      <%= form_with(model: user, local: true) do |form| %>
+          <% if user.errors.any? %>
+              <div class="alert alert-danger">
+                <span>Не должно быть пустых полей</span>
+              </div>
+          <% end %>
+          <div class="field">
+            <%= form.label :email %>
+            <%= form.text_field :email, ({:class => 'form-control'}) %>
+          </div>
 
-      <ul>
-        <% user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+          <div class="field">
+            <%= form.label :password %>
+            <%= form.password_field :password, ({:class => 'form-control'}) %>
+          </div>
+
+          <div class="field">
+            <%= form.label :password_confirmation %>
+            <%= form.password_field :password_confirmation, ({:class => 'form-control'}) %>
+          </div>
+
+          <div class="field">
+            <%= form.label :name %>
+            <%= form.text_field :name, ({:class => 'form-control'})%>
+          </div>
+
+          <div class="field">
+            <%= form.label :age %>
+            <%= form.number_field :age, ({:class => 'form-control'}) %>
+          </div>
+
+          <div class="field">
+            <%= form.label :town %>
+            <%= form.text_field :town, ({:class => 'form-control'}) %>
+          </div>
+
+          <div class="field">
+            <%= form.label :group %>
+            <%= form.text_field :group, ({:class => 'form-control'}) %>
+          </div>
+
+          <div class="actions">
+            <%= form.submit 'Create', :class => 'btn btn-outline-success' %>
+          </div>
+      <% end %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
-
-  <div class="field">
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation %>
-  </div>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :age %>
-    <%= form.number_field :age %>
-  </div>
-
-  <div class="field">
-    <%= form.label :town %>
-    <%= form.text_field :town %>
-  </div>
-
-  <div class="field">
-    <%= form.label :group %>
-    <%= form.text_field :group %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+  </body>
