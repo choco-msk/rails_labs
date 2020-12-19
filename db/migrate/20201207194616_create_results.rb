@@ -3,7 +3,6 @@ class CreateResults < ActiveRecord::Migration[6.0]
     create_table :results do |t|
       t.float :value
       t.text :result
-
       t.timestamps
     end
     add_index :results, :value, unique: true

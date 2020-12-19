@@ -11,7 +11,7 @@ class RafsonController < ApplicationController
       else
         @result = find_square(num.to_f)
         res = Result.create value: num, result: ActiveSupport::JSON.encode(@result)
-        res.save
+        res.save()
       end
     else
       @result = "Error"
@@ -40,7 +40,6 @@ class RafsonController < ApplicationController
 
   def results
     result = Result.all.map { |el| { value: el.value, result: ActiveSupport::JSON.decode(el.result) } }
-
     respond_to do |format|
       format.xml { render xml: result.to_xml }
     end
