@@ -9,3 +9,28 @@ ru:
         town: "Город"
         group: "Группа"
         age: "Возраст"
+      post:
+        title: 'Название'
+        body: 'Текст поста'
+        create: 'Создать'
+  pages:
+    news: 'Новости'
+    add: 'Добавить пост'
+    my_posts: 'Мои посты'
+    my_profile: 'Мой профиль'
+    login: 'Войти'
+    logout: 'Выйти'
+    signup: 'Регистрация'
+  my_posts:
+    read_more: 'Читать далее'
+    edit: 'Редактировать'
+    delte: 'Удалить'
+    back: 'Назад'
+  profile:
+    profile: 'Профиль'
+    name: 'Имя'
+    email: 'Почта'
+    age: 'Возраст'
+    town: 'Город'
+    group: 'Группа'
+    save: 'Сохранить'

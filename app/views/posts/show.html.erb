@@ -3,18 +3,18 @@
   <img src="http://spbtpp.ru/wp-content/uploads/2018/12/Логотип-БП-Восстания-6.jpg">
   <p class="h5 my-0 me-md-auto fw-normal" id="title"><b>BestPosts</b></p>
   <nav class="my-2 my-md-0 me-md-3">
-    <span class="p-2 text-dark" ><%= link_to 'News', posts_path%></span>
-    <span class="p-2 text-dark" ><%= link_to 'Add new post', new_post_path%></span>
-    <span class="p-2 text-dark" ><%= link_to 'My Posts', posts_my_posts_path%></span>
-    <span class="p-2 text-dark" ><%= link_to 'My Profile', @_current_user%></span>
+    <span class="p-2 text-dark" ><%= link_to t('pages.news'), posts_path%></span>
+    <span class="p-2 text-dark" ><%= link_to t('pages.add'), new_post_path%></span>
+    <span class="p-2 text-dark" ><%= link_to t('pages.my_posts'), posts_my_posts_path%></span>
+    <span class="p-2 text-dark" ><%= link_to t('pages.my_profile'), @_current_user%></span>
   </nav>
-  <a class="btn btn-outline-primary" href="/signout">Log out</a>
+  <a class="btn btn-outline-primary" id="pageLogBtn" href="/signout"><%= label_tag t('pages.logout') %></a>
 </header>
 <div class="container">
   <h1><%=User.find_by_id(@post.author_id).name %></h1>
   <h2><%= @post.title %></h2>
   <p><%= @post.body %></p>
-  <a class="btn btn-outline-primary" href="#" id="backBtn">Back</a>
+  <a class="btn btn-outline-primary" href="#" id="backBtn"><%= label_tag t('my_posts.back') %></a>
 </div>
 
 <script>

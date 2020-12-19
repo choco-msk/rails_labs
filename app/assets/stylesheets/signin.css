@@ -23,3 +23,10 @@ div>input[type='submit'] {
 a:last-child {
     margin-left: 2em;
 }
+label {
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+a label {
+    margin: auto;
+}

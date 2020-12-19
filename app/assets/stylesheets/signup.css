@@ -17,6 +17,13 @@ div>input[type='submit'] {
     margin-top: 1em;
 }
 .container {
-    margin-top: 0;
+    margin-top: 2em;
     width: 30%;
+}
+label {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+a label {
+    margin: auto;
 }

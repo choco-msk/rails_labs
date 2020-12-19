@@ -7,4 +7,10 @@
 input[type='submit'] {
     width: 8rem;
 }
+label {
+    margin-bottom: 0.5em;
+}
+a label {
+    margin-bottom: 0;
+}
 

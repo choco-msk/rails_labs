@@ -1,9 +1,9 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
-  before_action :current_user, only: %i[index, create, my_posts]
+  before_action :current_user, only: %i[index create my_posts]
   def new
-    if !current_user
-      redirect_to signin_path
-    end
+    redirect_to signin_path unless current_user
     @post = Post.new
   end
 
@@ -14,6 +14,7 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
   end
+
   def index
     @post = Post.all
   end
@@ -21,7 +22,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params_post)
     @post.author_id = current_user.id
-    if(@post.save())
+    if @post.save
       redirect_to posts_path
     else
       render 'new'
@@ -30,7 +31,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if(@post.update(params_post)) && @post.author_id = current_user.id
+    if @post.update(params_post) && @post.author_id = current_user.id
       redirect_to @post
     else
       render 'edit'
@@ -50,5 +51,4 @@ class PostsController < ApplicationController
   private def params_post
     params.require(:post).permit(:title, :body)
   end
-
 end

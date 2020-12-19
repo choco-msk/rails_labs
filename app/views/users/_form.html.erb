@@ -3,8 +3,8 @@
     <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
       <img src="http://spbtpp.ru/wp-content/uploads/2018/12/Логотип-БП-Восстания-6.jpg">
       <p class="h5 my-0 me-md-auto fw-normal" id="title"><b>BestPosts</b></p>
-      <a class="btn btn-outline-primary" id="Button" href="/signin">Log in</a>
-      <a class="btn btn-outline-primary" id="Button" href="/signup">Sign up</a>
+      <a class="btn btn-outline-primary" id="Button" href="/signin"><%= label_tag t('pages.login') %></a>
+      <a class="btn btn-outline-primary" id="Button" href="/signup"><%= label_tag t('pages.signup') %></a>
     </header>
     <div class="container">
       <%= form_with(model: user, local: true) do |form| %>
@@ -49,7 +49,7 @@
           </div>
 
           <div class="actions">
-            <%= form.submit 'Create', :class => 'btn btn-outline-success' %>
+            <%= form.submit t('activerecord.attributes.post.create'), :class => 'btn btn-outline-success' %>
           </div>
       <% end %>
     </div>

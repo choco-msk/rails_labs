@@ -9,7 +9,7 @@ one:
   group: MyString
 
 two:
-  email: MyString
+  email: MyStringggg
   password_digest: <%= BCrypt::Password.create('secret') %>
   name: MyString
   age: 1
